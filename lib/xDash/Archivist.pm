@@ -568,7 +568,7 @@ it under the terms of the Apache 2.0 license attached to the module.
 
 =item L<xDash::Logger::Dumb>
 
-=item L<xDash::Archiv::Pg>
+=item L<xDash::Archive::Pg>
 
 =item L<xDash::Sender>
 

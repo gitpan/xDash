@@ -14,7 +14,7 @@ use POSIX qw( setsid );
 # [2] MessageLogger;
 # [3] EventLogger.
 
-$VERSION = '0.01';
+$VERSION = '1.00';
 
 my $xDash__Sender__object_instance;
 

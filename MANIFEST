@@ -38,3 +38,4 @@ lib/xDash/Logger/File.pm
 lib/xDash/Spool/Dir.pm
 lib/xDash/Spool/Dummy.pm
 t/xDash.t
+META.yml                                 Module meta-data (added by MakeMaker)

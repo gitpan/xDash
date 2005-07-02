@@ -5,6 +5,8 @@ use strict;
 use warnings;
 use Text::CSV_XS;
 
+$VERSION = '1.00';
+
 sub create_sra_from {
     
     my $filepath = shift;

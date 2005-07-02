@@ -4,7 +4,8 @@ xDash version 1.00
 xDash is a framework for publish/subscribe integration of applications
 (EAI). xDash is using Jabber as communication 
 protocol and implementing the concept of convergence between 
-backend asynchronous messaging and instant messaging.
+backend asynchronous messaging and instant messaging. For more details
+look at http://xdash.jabberstudio.org.
 
 xDash framework consists of three main modules: xDash::Sender, 
 xDash::Receiver, xDash::Archivist and some other supporting modules.
@@ -25,13 +26,18 @@ To install this module type the following:
 
 DEPENDENCIES
 
-This module requires these other modules and libraries:
+This module set requires these other modules and libraries.
 
+[1] For Sender, Receiver:
   Net::Jabber
-  DBI
-  DBD::Pg
   Text::CSV_XS    
 
+[2] For Sender, Receiver, Archivist:
+  Net::Jabber
+  Text::CSV_XS
+  DBI
+  DBD::Pg
+  
 COPYRIGHT AND LICENCE
 
 Copyright 2005 Jerzy Wachowiak <jwach@cpan.org>
