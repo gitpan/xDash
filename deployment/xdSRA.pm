@@ -3,9 +3,10 @@ package xdSRA;
 
 use strict;
 use warnings;
+use vars qw( $VERSION );
 use Text::CSV_XS;
 
-$VERSION = '1.00';
+$VERSION = '1.01';
 
 sub create_sra_from {
     
@@ -76,7 +77,7 @@ sub create_sra_from {
 	};
 #$    
 	#Spelling tolerant sender, receiver, archivist array initialisation 
-	if (/nd/i){
+	if ( $role =~ /nd/i ){
 	    $sender[$si]{hostname} = $hostname;
 	    $sender[$si]{port} = $port;
 	    $sender[$si]{username} = $username;
@@ -90,7 +91,7 @@ sub create_sra_from {
 	    $si++
 	}
      
-	if (/ceiv|ciev/i){
+	if ( $role =~ /ceiv|ciev/i ){
 	    $receiver[$ri]{hostname} = $hostname;
 	    $receiver[$ri]{port} = $port;
 	    $receiver[$ri]{username} = $username;
@@ -104,7 +105,7 @@ sub create_sra_from {
 	    $ri++
 	}
      
-	if (/chivi/i){
+	if ( $role =~ /chivi/i ){
 	    $archivist[$ai]{hostname} = $hostname;
 	    $archivist[$ai]{port} = $port;
 	    $archivist[$ai]{username} = $username;

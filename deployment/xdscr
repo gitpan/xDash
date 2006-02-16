@@ -6,9 +6,11 @@ use warnings;
 use Text::CSV_XS;
 use xdSRA;
 
-my $filepath=shift;
+my $filepath = shift;
+my $database_name = shift;
 
 defined( $filepath ) or usage();
+defined( $database_name ) or usage();
 
 my $result = xdSRA::create_sra_from( $filepath );
 my @sender = @{ $result->{sender} };
@@ -54,7 +56,7 @@ package Spool;
 # Test settings:
 use base xDash::Spool::Dummy;
 sub SetParameters { shift->SUPER::SetParameters( 
- event_limit => 20, mean_interoccurence_time => 3 ) }
+ event_limit => 20, mean_interoccurence_time => 5 ) }
 
 # Change if you have your own implemantation or 
 # Comment out the test settings above and uncomment the 1.line & 3.line below.
@@ -290,7 +292,7 @@ package Archive;
 use base xDash::Archive::Pg;
 # Set up your own database access parameters 
 sub SetParameters { shift->SUPER::SetDatabaseConnection(
- name => 'xdash', user => '', password => '' ) }
+ name => <database_name>, user => '', password => '' ) }
 #===
 
 package main;
@@ -335,6 +337,8 @@ EOS
      s/<emergency_logger_path>/'$archivist[$ai]{homepath}\/$jclientpath\/emergency.log'/g;
     $script =~
      s/<configuration_path>/'$archivist[$ai]{homepath}\/$jclientpath\/archivist.xml'/g;
+    $script =~
+     s/<database_name>/'$database_name'/g;
     open( SCRIPT, ">> $jclientpath/$archivist[$ai]{filename}" );
     print SCRIPT $script;
     close( SCRIPT )
@@ -347,16 +351,16 @@ sub usage {
     print <<EOU;
 
 USAGE:
-$0 filename
+$0 filename database_name
 
 DESCRIPTION:
 xdscr creates scripts for Sender, Receiver and Archivist execution files 
 in the directories with the name of their JID. The usage and needed 
-customisation are described in the generated files. The only input parameter is 
-a file. The records in the input file must have the format: description; role; 
-hostname; port; username; password; resource; operating system; home path. 
-The role can be only: sender, receiver or archivist. Comments have to start 
-with #.
+customisation are described in the generated files. The input parameters are 
+the file and database name. The records in the input file must have the 
+format: description; role; hostname; port; username; password; resource;
+operating system; home path. The role can be only: sender, receiver 
+or archivist. Comments have to start with #.
 
 EOU
 exit 1

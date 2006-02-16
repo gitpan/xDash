@@ -1,7 +1,7 @@
 use 5.005;
 use ExtUtils::MakeMaker;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 print <<EOM;
 

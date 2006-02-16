@@ -49,7 +49,7 @@ check $? ./xdreg
 check $? ./xdcnf
 
 # Building agent scripts
-./xdscr $FILENAME
+./xdscr $FILENAME $DATABASE
 check $? xdscr
 
 # Building service registration for various OS

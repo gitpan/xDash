@@ -87,9 +87,11 @@ sub OSregistration{
 	    open(SERVICE, "> $jclientpath".'/inittab.tmpl');
 	    print SERVICE "# [1] This entry should be put into /etc/inittab at the end of the file.\n".
 	    "# [2] Please uncomment and change the xD to an id sticking to the inittab rules.\n".
-	    "# [3] Correct, if needed, runleveles according to your linux distribution.\n\n";
+	    "# [3] Correct, if needed, runleveles according to your linux distribution.\n".
+        "# [4] Test with :once: if everything OK, run with :respawn:\n\n";
     	    print SERVICE "# xDash agent / $participant[$pi]{username}\@$participant[$pi]{hostname}/$participant[$pi]{resource} - $participant[$pi]{comments}.\n";
-    	    print SERVICE "#xD:23:respawn:$participant[$pi]{homepath}/$jclientpath/$participant[$pi]{filename}\n";
+    	    print SERVICE "#xD:23:once:$participant[$pi]{homepath}/$jclientpath/$participant[$pi]{filename}\n";
+            print SERVICE "#xD:23:respawn:$participant[$pi]{homepath}/$jclientpath/$participant[$pi]{filename}\n";
     	}
     }
 }

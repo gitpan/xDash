@@ -201,7 +201,8 @@ if [ $q -ne 0 ];
         echo "$database propably already exists !!! Bye, bye ..."
         echo
 	exit 1
-    fi    
+    fi 
+createlang plpgsql $database   
 psql -f ./$database.sql $database
 echo ---End making the database---
 EOS
